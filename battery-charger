@@ -1,0 +1,10 @@
+template <auto* F> struct Wrapper;
+
+template <class Ret, class... Args, auto (*F)(Args...) -> Ret>
+struct Wrapper<F>
+{
+    auto operator()(Args... args) const
+    {
+        return F(args...);
+    }
+};
